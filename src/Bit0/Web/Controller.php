@@ -23,21 +23,12 @@ namespace Bit0\Web {
       $this->m_Model['l10n']       = array();
       $this->m_Model['Controller'] = $params['Controller'];
       $this->m_Model['Action']     = $params['View'];
+      $this->m_Model['AppTitle']   = $this->_App->Title;
       $this->m_Model['Title']      = $params['Controller'] . ' | ' . $this->_App->Title;
       $this->m_Model['PageId']     = "{$params['Controller']}-{$params['View']}";
       $this->m_Model['AppRoot']    = $this->LivePath( '~' );
       $this->m_Model['ActionPath'] = $this->LivePath( "~{$params['Slug']}" );
       $this->m_Model['PageTitle']  = $this->m_Model['Action'];
-      $this->m_Model['BackButton'] = false;
-      $this->m_Model['ShowMenu']   = true;
-
-      if ( isset( $this->_User ) ) {
-        $this->m_Model['User']     = $this->_User->GetObject()->Username;
-        $this->m_Model['Customer'] = $this->_User->GetObject()->Customer->Name;
-      } else {
-        $this->m_Model['User']     = 'LOGGED OUT!';
-        $this->m_Model['Customer'] = 'LOGGED OUT!';
-      }
     }
 
     public function Redirect( $path, $code = 302 ) {
