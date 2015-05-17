@@ -1,6 +1,17 @@
 <?php
 namespace Bit0\Core {
-
+  /**
+   * Class Context
+   * @package Bit0\Core
+   *
+   * @property \Bit0\DataSource\AdapterBase $Database
+   * @property \Bit0\Web\Router $Router
+   * @property \Bit0\Exceptions\ExceptionHandling $ExceptionHandler
+   * @property Buffer $Buffer
+   * @property \Bit0\Security\Auth\Providers\DatabaseProvider $User
+   * @property \Bit0\IO\Log $Logger
+   *
+   */
     class Context {
         private static $m_Instance;
         public static function &GetInstance($vendor = null)
