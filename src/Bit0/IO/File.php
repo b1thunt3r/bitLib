@@ -48,15 +48,16 @@ namespace Bit0\IO
             }
             else if ($create)
             {
-                if (touch($filepath)) {
+                try {
+                    touch($filepath);
                     $this->Info($filepath);
-                } else {
-                    throw new \Bit0\Exceptions\PathException('File Not Found', 404);
+                } catch (\Exception $ex) {
+                    throw new \Bit0\Exceptions\CreateFileException($ex->getMessage(), 500, $ex);
                 }
             }
             else
             {
-                throw new \Bit0\Exceptions\PathException('File Not Found', 404);
+                throw new \Bit0\Exceptions\PathException('File Not Found {'.$filepath.'}', 404);
             }
         }
         
