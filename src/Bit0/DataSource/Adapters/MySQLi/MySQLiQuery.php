@@ -131,7 +131,7 @@ namespace Bit0\DataSource\Adapters\MySQLi
                 }
             }
             
-            $this->_App->Logger->Notice("\tResult: ".count($res));
+//            $this->_App->Logger->Notice("\tResult: ".count($res));
             
             return $res;
         }

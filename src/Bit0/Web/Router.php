@@ -137,12 +137,12 @@ namespace Bit0\Web {
           $controller = $rObj->newInstance( $params );
           $rObj->getMethod( 'Handle' )->invoke( $controller, array( $this->m_Slug, $this->m_Param ) );
         } else {
-          throw new \Bit0\Exceptions\PathException( 'No action', 404 );
+          throw new \Bit0\Exceptions\PathException( "No action: {$url[1]}", 404 );
         }
       } catch ( \ReflectionException $ex ) {
         switch ( $ex->getCode() ) {
           case - 1:
-            throw new \Bit0\Exceptions\PathException( 'No controller', 404, $ex );
+            throw new \Bit0\Exceptions\PathException( "No controller: {$url[0]}", 404, $ex );
             break;
           default:
             throw $ex;
