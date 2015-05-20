@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+<<<<<<< HEAD
   <component name="DBNavigator.Project.ConnectionManager">
     <connections />
   </component>
@@ -359,6 +360,8 @@
       </general>
     </ddl-file-settings>
   </component>
+=======
+>>>>>>> 49f218a7caf5dc3255cbecb86950285e52c45e7d
   <component name="ProjectRootManager" version="2" />
   <component name="SvnBranchConfigurationManager">
     <option name="mySupportsUserInfoFilter" value="true" />
