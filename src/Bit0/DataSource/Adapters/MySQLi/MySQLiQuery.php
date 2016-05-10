@@ -95,6 +95,7 @@ namespace Bit0\DataSource\Adapters\MySQLi
             $query = "SELECT * FROM `{$this->m_DBConn->GetPrefix()}{$this->m_Model->TableName}` {$this->m_Where} {$this->m_Sort} LIMIT {$offset}, {$count};";
             $result = $this->m_DBConn->Execute($query);
             
+            
             $res = array();
             if ($result)
             {
@@ -112,12 +113,14 @@ namespace Bit0\DataSource\Adapters\MySQLi
                     {
                         $o = new $this->m_Model->ClassName;
                         foreach ($row as $col => $value)
-                        {
-                            if (!$fields[$col][1])
-                                $o->$fields[$col][0] = $value;
+                        {							
+							$key = $fields[$col][0];
+                            if (!$fields[$col][1]) {
+                                $o->{$key} = $value;
+							}
                             else
                             {                            
-                                $o->$fields[$col][0] = 
+                                $o->{$key} = 
                                     $this->m_DBConn->CreateQuery($this->m_Model->FieldList[$fields[$col][0]]->Relation)
                                                         ->AddFilterRaw($this->m_Model->FieldList[$fields[$col][0]]->RelationFieldName, $value)
                                                         ->GetEntity();

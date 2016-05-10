@@ -116,9 +116,9 @@ namespace Bit0\Core {
         {
             \session_start();
             $this->Buffer = new Buffer();
-            $this->ExceptionHandler = new \Bit0\Exceptions\ExceptionHandling($this->Buffer);
+            //$this->ExceptionHandler = new \Bit0\Exceptions\ExceptionHandling($this->Buffer);
             $this->Router = new \Bit0\Web\Router();
-            $this->AddPhar('h2o');
+            //$this->AddPhar('h2o');
         }
     }
 }

@@ -52,17 +52,21 @@ namespace Bit0\DataSource\Adapters\MySQLi
             {
                 if ($info->IdFieldName != $field->FieldName)
                 {
-                    $property = $model->$PropertyName;
-                    $fields[] = "`{$field->FieldName}`";
+                    $property = $model->{$PropertyName};
+					if (isset($property)) {
+						
+						$fields[] = "`{$field->FieldName}`";
 
-                    if ($field->Relation == null)
-                        $values[] = $this->EscapeString($property, true);
-                    else if ($field->Relation != null) {
-                        if ($updateRelations)
-                            $values[] = $property !== null ? $this->Save($property, $updateRelations) : 'NULL';
-                        else
-                            $values[] = isset($property) ? $property->GetId() : 'NULL';
-                    }
+						if ($field->Relation == null) {
+							$values[] = $this->EscapeString($property, true);
+						}
+						else if ($field->Relation != null) {
+							if ($updateRelations)
+								$values[] = $property !== null ? $this->Save($property, $updateRelations) : 'NULL';
+							else
+								$values[] = isset($property) ? $property->GetId() : 'NULL';
+						}
+					}
                 }
             }
 
@@ -71,6 +75,7 @@ namespace Bit0\DataSource\Adapters\MySQLi
 
             if(!$result = $this->Execute($query))
             {
+				var_dump($query);
                 throw new \Bit0\DataSource\DBException($this->m_DBObject->error, $this->m_DBObject->errno);
                 return -1;
             }

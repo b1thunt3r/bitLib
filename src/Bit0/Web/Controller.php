@@ -32,7 +32,7 @@ namespace Bit0\Web {
     }
 
     public function Redirect( $path, $code = 302 ) {
-      Router::Redirect( $path, $code );
+      Router::Redirect( Router::LivePath( $path, false ), $code );
     }
 
     public static function LivePath( $path, $absolute = false ) {

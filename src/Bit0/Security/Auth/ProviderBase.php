@@ -29,7 +29,7 @@ namespace Bit0\Security\Auth
             throw new \Bit0\Exceptions\NoMethodException();
         }
         
-        public static function Create($username, $username)
+        public static function Create($username, $password)
         {
             throw new \Bit0\Exceptions\NoMethodException();
         }
